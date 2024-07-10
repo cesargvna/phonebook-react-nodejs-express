@@ -2,9 +2,10 @@ const express = require("express");
 var morgan = require("morgan");
 const cors = require("cors");
 const app = express();
+
+app.use(express.json());
 app.use(express.static("build"));
 app.use(cors());
-app.use(express.json());
 let persons = [
   {
     id: 1,
@@ -36,10 +37,6 @@ app.use(
     ":method :url :status :res[content-length] :response-time ms :content",
   ),
 );
-
-app.get("/", (req, res) => {
-  req.send("<h1>Hello World!</h1>");
-});
 
 app.get("/api/persons", (request, response) => {
   response.json(persons);
