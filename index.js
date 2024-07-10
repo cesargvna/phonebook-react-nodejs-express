@@ -26,7 +26,7 @@ let persons = [
   },
 ];
 
-app.use(express.static("build"));
+app.use(express.static("dist"));
 app.use(cors());
 app.use(express.json());
 morgan.token("content", function (req, res) {
